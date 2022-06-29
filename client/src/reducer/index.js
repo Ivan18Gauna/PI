@@ -1,7 +1,8 @@
 
 const initialState = {
     videogames : [],
-    allVideoGames : []
+    allVideoGames : [],
+    genres : []
 }
 function rootReducer (state= initialState,action){
 switch(action.type){
@@ -50,6 +51,20 @@ switch(action.type){
                     ...state,
                     videogames: sortArr
                 }
+                case 'GET_NAME_VIDEOGAMES':
+                    return{
+                        ...state,
+                        videogames: action.payload
+                    }
+                case 'POST_GENRES':
+                    return{
+                        ...state,
+                    }
+                    case "GET_GENRES":
+                    return{
+                        ...state,
+                        genres: action.payload
+                    }
         default:
             return state;
 }

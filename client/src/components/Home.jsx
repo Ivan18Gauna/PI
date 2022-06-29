@@ -5,6 +5,7 @@ import { getVideoGames, filterVideogamesByGenres, filterCreated, orderByName } f
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Paginado from "./Paginado";
+import SearchBar from "./SearchBar";
 
 
 export default function Home() {
@@ -53,6 +54,7 @@ export default function Home() {
      
       <Link to="/videogames">Crear Video Game</Link>
       <h1>Video games</h1>
+      <SearchBar/>
       <button
         onClick={(e) => {handleClick(e);}}>
           volver a cargar todos los videogame
