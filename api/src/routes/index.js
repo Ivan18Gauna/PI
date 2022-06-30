@@ -57,10 +57,31 @@ const getAllVideogame = async () => {
   return infoTotal;
 };
 
+router.get('/videogame/:id', async (req,res)=>{
+  const {id} = req.params
+  const apiUrl = await axios.get("https://api.rawg.io/api/games?key=e609f940a0864a2bb2fbba5560fb1189");
+  const apiInfo = await apiUrl.data.results.find(x => x.id ===  parseInt(id))
+
+  if(apiInfo){
+    const xo = {
+      id: apiInfo.id,
+      name: apiInfo.name,
+      img: apiInfo.background_image,
+      dataLan: apiInfo.released,
+      raiting: apiInfo.rating,
+      platforms: apiInfo.platforms.map(x => x.platform.name),
+      genres: apiInfo.genres,
+    }
+  res.status(200).send(xo)
+  }else{
+    res.status(404).send(`el id:${id} no fue encontrado`)
+  }
+})
+
 router.get("/videogames", async (req, res) => {
   const name = req.query.name;
   const allVg = await getAllVideogame();
-
+  
   if (name) {
     let nameVg = await allVg.filter((x) =>
       x.name.toLowerCase().includes(name.toLowerCase())
@@ -73,25 +94,6 @@ router.get("/videogames", async (req, res) => {
   }
 });
 
-router.get('/videogame/:id', async (req,res)=>{
-  const {id} = req.params
-  const apiUrl = await axios.get("https://api.rawg.io/api/games?key=e609f940a0864a2bb2fbba5560fb1189");
-  const apiInfo = await apiUrl.data.results.find(x => x.id ===  parseInt(id))
-
-  if(apiInfo){
-    const xo = {
-      name: apiInfo.name,
-      img: apiInfo.background_image,
-      dataLan: apiInfo.released,
-      raiting: apiInfo.raiting,
-      genres: apiInfo.genres,
-      platforms: apiInfo.platforms
-    }
-  res.status(200).send(xo)
-  }else{
-    res.status(404).send(`el id:${id} no fue encontrado`)
-  }
-})
 
 router.post('/videogames', async(req,res)=>{
 const {name,desciption,dataInfo,rating,genres,createInDb} = req.body
