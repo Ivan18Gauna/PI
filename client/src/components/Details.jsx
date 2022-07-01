@@ -18,7 +18,7 @@ export default function Detail(props) {
       {mydetails ? (
         <div>
           <h1>Nombre: {mydetails.name}</h1>
-          <img src={mydetails.img}/>
+          <img src={mydetails.img} alt="img not found" width='300px' height='400px'/>
           <h2>Genero: {mydetails.genres.map(x => `-${x.name}`)}</h2>
           <h3>Fecha de lanzamiento: {mydetails.dataLan}</h3>
           <h4>Raiting: {mydetails.rating}</h4>

@@ -43,7 +43,6 @@ export default function Home() {
   }
 
   function handleFilterCreated(e) {
-    e.preventDefault();
     dispatch(filterCreated(e.target.value));
   }
 
@@ -85,10 +84,12 @@ export default function Home() {
           <option value="Created">Creado</option>
         </select>
         <select onChange={(e) => handleSort(e)}>
-          <option value="az">A-Z</option>
-          <option value="za">Z-A</option>
-          {/* <option value="rtg">Rating</option> */}
+          <option value="atoz">A-Z</option>
+          <option value="ztoa">Z-A</option>
+          <option value="best">Mejor rating</option>
+          <option value="worst">Peor Rating</option>
         </select>
+      
 
         {currentVideogames?.map((x) => {
           return (

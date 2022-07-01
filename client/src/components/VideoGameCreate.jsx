@@ -47,14 +47,7 @@ export default function VideogameCreate() {
     );
   }
 
-  // function handleCheck (){
-  //     if(e.target.checked){
-  //         setInput({
-  //             ...input,
-  //             genres: e.target.value
-  //         })
-  //     }
-  // }
+
 
   function handleSelect(e) {
     setInput({
@@ -129,7 +122,7 @@ export default function VideogameCreate() {
         <div>
           <label>Raiting:</label>
           <input
-            type="text"
+            type="number"
             value={input.rating}
             name="rating"
             onChange={(e) => handleChange(e)}
@@ -146,7 +139,7 @@ export default function VideogameCreate() {
         <br />
         <br />
 
-        <button type="sudmit">Crear videogame</button>
+        <button type="submit">Crear videogame</button>
       </form>
       {input.genres.map(el =>
         <div>

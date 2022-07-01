@@ -63,7 +63,6 @@ export function getGenres (){
 export function postGenres (payload){
     return async function(dispatch){
         var json = await axios.post('http://localhost:3001/videogames',payload)
-        console.log(json)
         return json
     }
 }

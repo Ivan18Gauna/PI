@@ -68,7 +68,7 @@ router.get('/videogame/:id', async (req,res)=>{
       name: apiInfo.name,
       img: apiInfo.background_image,
       dataLan: apiInfo.released,
-      raiting: apiInfo.rating,
+      rating: apiInfo.rating,
       platforms: apiInfo.platforms.map(x => x.platform.name),
       genres: apiInfo.genres,
     }
